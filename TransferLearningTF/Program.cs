@@ -1,7 +1,6 @@
 ﻿using Microsoft.ML;
 using Microsoft.ML.Data;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,7 +9,7 @@ namespace TransferLearningTF
 {
 	class Program
 	{
-		static readonly string _assetsPath = Path.Combine(Environment.CurrentDirectory, "assets");
+		static readonly string _assetsPath = Path.Combine(Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..\\..\\..\\")), "assets");
 		static readonly string _imagesFolder = Path.Combine(_assetsPath, "images");
 		static readonly string _trainTagsTsv = Path.Combine(_imagesFolder, "tags.tsv");
 		static readonly string _testTagsTsv = Path.Combine(_imagesFolder, "test-tags.tsv");
