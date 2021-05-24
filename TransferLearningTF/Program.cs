@@ -15,6 +15,7 @@ namespace TransferLearningTF
 		static readonly string _testTagsTsv = Path.Combine(_imagesFolder, "test-tags.tsv");
 		static readonly string _predictSingleImage = Path.Combine(_imagesFolder, "toaster3.jpg");
 		static readonly string _inceptionTensorFlowModel = Path.Combine(_assetsPath, "inception", "tensorflow_inception_graph.pb");
+		static readonly string _retrainedTensorFlowModel = Path.Combine(_assetsPath, "inception", "retrained_model.pb");
 
 		static void Main(string[] args)
 		{
@@ -84,6 +85,7 @@ namespace TransferLearningTF
 			Console.WriteLine($"LogLoss is: {metrics.LogLoss}");
 			Console.WriteLine($"PerClassLogLoss is: {String.Join(" , ", metrics.PerClassLogLoss.Select(c => c.ToString()))}");
 			// Return the trained model
+			mlContext.Model.Save(model, trainingData.Schema, _retrainedTensorFlowModel);
 			return model;
 		}
 
